@@ -7,6 +7,9 @@ Web interface for fluidsynth
 * in case you need other packaging than deb, please modify Dockerfile and build.sh
 
 * to use with apt, copy fluidweb.list to your target's /etc/apt/sources.list.d folder and do apt update
+*     wget https://raw.githubusercontent.com/helander/fluidweb/main/fluidweb.list
+
+
 
 When done, please cleanup docker images on host
 * docker rmi build-fluidweb-arm64
