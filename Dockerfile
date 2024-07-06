@@ -5,8 +5,9 @@ ARG VERSION
 RUN apt update -y
 
 RUN apt install -y golang
+RUN apt install -y dpkg-dev
+RUN apt install -y debhelper
 
-RUN mkdir -p package/DEBIAN
 RUN mkdir -p package/opt/bin && mkdir -p package/opt/lib/fluidweb/www
 
 ADD server.go .
@@ -21,6 +22,5 @@ RUN sed -i s/VERSION/${VERSION}/g package/DEBIAN/control
 
 RUN mkdir -p package/etc/systemd/system
 ADD fluidweb.service package/etc/systemd/system
-
 RUN dpkg-deb --build --root-owner-group package
 RUN mv package.deb fluidweb_${VERSION}-1_${ARCH}.deb
